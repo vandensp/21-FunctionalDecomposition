@@ -4,7 +4,7 @@ Hangman.
 Authors: Samuel VanDenburgh and Valeria Paiz.
 """  #Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
-# TODO: 2. Implement Hangman using your Iterative Enhancement Plan.
+# Done: 2. Implement Hangman using your Iterative Enhancement Plan.
 
 ####### Do NOT attempt this assignment before class! ######
 import random
@@ -20,8 +20,10 @@ def pick_word():
     while len(picked) < lenght:
         r = random.randrange(0, len(words))
         picked = words[r]
-    print(picked)
-    return picked
+    word = []
+    for k in range (len(picked)):
+        word = word + [picked[k]]
+    return word
 
 def set_difficulty():
     wrong = int(input('How many wrong attempts would you like to allow'))
@@ -72,11 +74,16 @@ def main():
         letter = ask_letter()
         check = check_letter(letter, word, lines, wrong)
         if check == word:
-            print('You Won')
+            print('You Won!')
+            break
         if type(check) is int:
             wrong = check
             if check >= mistakes_allowed:
+                string = ''
+                for k in range (len(word)):
+                    string = string + word[k]
                 print('Game Over')
+                print('The word was:', string)
                 break
 
 
