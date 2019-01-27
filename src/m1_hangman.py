@@ -63,7 +63,12 @@ def wrong_attempt(wrong):
     wrong = wrong + 1
     return wrong
 
-
+def play_again():
+    again = input('Would you like to play again? Please type yes or no')
+    if again == 'yes' or again == 'Yes':
+        main()
+    elif again == 'no' or again == 'No':
+        print(':( Goodbye')
 
 def main():
     wrong = 0
@@ -85,6 +90,8 @@ def main():
                 print('Game Over')
                 print('The word was:', string)
                 break
+    play_again()
 
 
 main()
+1
